@@ -7,7 +7,7 @@ FROM centos/systemd
 MAINTAINER "Tamas Foldi" <tfoldi@starschema.net>
 
 # this is the version what we're building
-ENV TABLEAU_VERSION="2019.1.1" \
+ENV TABLEAU_VERSION="2020-3-2" \
     LANG=en_US.UTF-8
 
 # make systemd dbus visible 
@@ -23,7 +23,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
     (echo 'tsm ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/tsm) && \
     mkdir -p  /run/systemd/system /opt/tableau/docker_build && \
     yum install -y \
-             "https://downloads.tableau.com/esdalt/${TABLEAU_VERSION}/tableau-server-${TABLEAU_VERSION//\./-}.x86_64.rpm" \
+             "https://downloads.tableau.com/tssoftware/tableau-server-${TABLEAU_VERSION//\./-}.x86_64.rpm" \
              "https://downloads.tableau.com/drivers/linux/yum/tableau-driver/tableau-postgresql-odbc-9.5.3-1.x86_64.rpm"  && \
     rm -rf /var/tmp/yum-* 
 
@@ -35,6 +35,6 @@ RUN mkdir -p /etc/systemd/system/ && \
     systemctl enable tableau_server_install 
 
 # Expose TSM and Gateway ports
-EXPOSE 80 8850
+EXPOSE 868 8850
 
 CMD /sbin/init

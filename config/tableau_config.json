@@ -2,11 +2,11 @@
    "configEntities": {
       "gatewaySettings": {
          "_type": "gatewaySettingsType",
-         "port": 80,
+         "port": 868,
          "firewallOpeningEnabled": true,
          "sslRedirectEnabled": true,
          "publicHost": "localhost",
-         "publicPort": 80
+         "publicPort": 868
       },
       "identityStore": {
          "_type": "identityStoreType",
